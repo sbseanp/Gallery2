@@ -225,5 +225,6 @@ public class gallery extends Activity {
             return rootView;
         }
     }
-
 }
+
+
