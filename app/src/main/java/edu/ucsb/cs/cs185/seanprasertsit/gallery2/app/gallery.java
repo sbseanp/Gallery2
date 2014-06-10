@@ -85,7 +85,9 @@ public class gallery extends Activity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener{
+
+        ActionBar actionBar = getActionBar();
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -129,7 +131,21 @@ public class gallery extends Activity {
             }
             return null;
         }
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            actionBar.setSelectedNavigationItem(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+        }
     }
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -189,14 +205,16 @@ public class gallery extends Activity {
 
     public class CameraFragment extends Fragment {
 
-        public CameraFragment() {}
+        public CameraFragment() {
+        }
 
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_camera, container, false);
             startCameraPreview(rootView);
             return rootView;
         }
-        public boolean startCameraPreview (View view) {
+
+        public boolean startCameraPreview(View view) {
             boolean opened = false;
             CameraPreview cp = new CameraPreview(getApplicationContext());
             FrameLayout preview = (FrameLayout) view.findViewById(R.id.camera);
@@ -204,7 +222,6 @@ public class gallery extends Activity {
             return opened;
         }
     }
-
     public static class FriendFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "2";

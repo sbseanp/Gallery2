@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.seanprasertsit.gallery2.app;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.hardware.Camera;
 import android.view.SurfaceHolder;
