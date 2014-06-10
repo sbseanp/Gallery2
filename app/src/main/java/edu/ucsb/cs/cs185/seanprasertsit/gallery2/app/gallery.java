@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.hardware.Camera;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -14,12 +15,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Gallery;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.content.Context;
 
 public class gallery extends Activity {
 
@@ -76,8 +80,6 @@ public class gallery extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -185,26 +187,24 @@ public class gallery extends Activity {
         }
     }
 
-    public static class CameraFragment extends Fragment {
-
-        private static final String ARG_SECTION_NUMBER = "1";
-
-        public static CameraFragment newInstance(int sectionNumber) {
-            CameraFragment fragment = new CameraFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
+    public class CameraFragment extends Fragment {
 
         public CameraFragment() {}
 
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_camera, container, false);
-            //SurfaceView sview = (SurfaceView) rootView.findViewById(R.id.camera);
+            startCameraPreview(rootView);
             return rootView;
         }
+        public boolean startCameraPreview (View view) {
+            boolean opened = false;
+            CameraPreview cp = new CameraPreview(getApplicationContext());
+            FrameLayout preview = (FrameLayout) view.findViewById(R.id.camera);
+            preview.addView(cp);
+            return opened;
+        }
     }
+
     public static class FriendFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "2";
@@ -226,5 +226,3 @@ public class gallery extends Activity {
         }
     }
 }
-
-

@@ -7,14 +7,12 @@ import android.view.SurfaceView;
 
 import java.io.IOException;
 
-public class CameraFragment extends SurfaceView implements SurfaceHolder.Callback {
+public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     SurfaceHolder mHolder;
     Camera mCamera;
 
-    public CameraFragment(Context context, Camera camera) {
+    public CameraPreview(Context context) {
         super(context);
-        mCamera = camera;
-
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
         mHolder = getHolder();
@@ -24,8 +22,10 @@ public class CameraFragment extends SurfaceView implements SurfaceHolder.Callbac
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
+        mCamera = Camera.open();
         try {
             mCamera.setPreviewDisplay(holder);
+            mCamera.setDisplayOrientation(90);
             mCamera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,6 +34,9 @@ public class CameraFragment extends SurfaceView implements SurfaceHolder.Callbac
 
     public void surfaceDestroyed(SurfaceHolder holder) {
         // empty. Take care of releasing the Camera preview in your activity.
+        mCamera.stopPreview();
+        mCamera.release();
+        mCamera = null;
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
