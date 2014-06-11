@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content" >
+<ImageButton
+    android:id="@+id/play_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/play_circle"  
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:background="@null" 
+    />
+
+<ImageButton
+    android:id="@+id/edit_album_button"
+    android:background="@null" 
+    android:src="@drawable/settings"  
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"    
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"  
+    android:layout_marginRight="8dp" 
+    android:layout_marginBottom="15dp" />
+
+<LinearLayout
+     android:id="@+id/lin_triangle"
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content"
+	  android:layout_alignParentBottom="true"
+	  android:layout_centerHorizontal="true"
+	   >
+<ImageButton
+    android:id="@+id/play_button_triangle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="@null"
+    android:layout_marginBottom="18dp" 
+    android:layout_marginLeft="15dp" 
+    android:src="@drawable/play_triangle" />
+</LinearLayout>
+<GridView
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:columnWidth="90dp"
+    android:gravity="center"
+    android:horizontalSpacing="10dp"
+    android:numColumns="auto_fit"
+    android:stretchMode="columnWidth"
+    android:verticalSpacing="10dp" >
+</GridView>
+<LinearLayout
+     android:id="@+id/lin_settings"
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content"
+	  android:layout_alignParentBottom="true"
+	  android:layout_alignParentRight="true"
+	  android:layout_marginBottom="4dp"
+	   > 
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="8dp"
+    android:layout_alignParentBottom="true"
+
+    android:layout_alignParentRight="true"
+    android:src="@drawable/settings_circle" />
+</LinearLayout>
+</RelativeLayout>

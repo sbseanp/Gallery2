@@ -1,0 +1,16 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+     android:shape="rectangle"
+    android:layout_width="@dimen/done_button_width"
+    android:layout_height="30dp"
+    android:textSize="25dp"
+    android:textColor="#ffffff">
+<!--     <gradient 
+        android:startColor="#FF555555" 
+        android:centerColor="#FF555555"
+        android:endColor="#FF555555" 
+        android:angle="90" /> -->
+
+    <corners android:radius="0px" />
+	<solid android:color="#3fa9f5"/>
+
+</shape>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="1000dp"
+    android:orientation="vertical"
+    android:paddingBottom="10dp" >
+
+<!--     <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/secondsCounter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#5a5a5c"
+            android:textSize="35dp" />
+    </LinearLayout> -->
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/sample_1" 
+        android:paddingBottom="60dp"
+         />
+
+<!--         <LinearLayout
+		    android:layout_width="match_parent" 
+		    android:layout_height="wrap_content"
+		   android:layout_alignBottom="@id/myImageView">
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".80" 
+
+        android:progress="50" />
+
+        <ImageView
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp" 
+            android:layout_height="wrap_content" 
+            android:layout_weight=".20"
+            android:src="@drawable/trash" 
+            android:id="@+id/deleteImage"
+            android:background="@null" />
+
+    </LinearLayout> -->
+
+
+
+    <Button
+        android:id="@+id/exitImagePreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:background="@drawable/done_button"
+        android:text="  Done  " />
+</RelativeLayout>
+

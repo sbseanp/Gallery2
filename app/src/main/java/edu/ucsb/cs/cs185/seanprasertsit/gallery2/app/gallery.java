@@ -3,22 +3,21 @@ package edu.ucsb.cs.cs185.seanprasertsit.gallery2.app;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Gallery;
-import android.widget.RelativeLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 
 public class gallery extends Activity {
@@ -38,22 +37,73 @@ public class gallery extends Activity {
      */
     ViewPager mViewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
 
-
-
+/*
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.Lmain);
+        linearLayout.setBackgroundColor(Color.GRAY);
+        ScrollView scroll = (ScrollView) findViewById(R.id.main);
+        scroll.setBackgroundColor(Color.GRAY);
+*/
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
 
+
+/*
+        GridView gridview4 = (GridView) findViewById(R.id.gridView4);
+        GridView gridview3 = (GridView) findViewById(R.id.gridView3);
+        GridView gridview2 = (GridView) findViewById(R.id.gridView2);
+        GridView gridview1 = (GridView) findViewById(R.id.gridView1);
+        gridview1.setAdapter(new ImageAdapter1(this));
+        gridview2.setAdapter(new ImageAdapter1(this));
+        gridview3.setAdapter(new ImageAdapter1(this));
+        gridview4.setAdapter(new ImageAdapter1(this));
+
+
+        gridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(gallery.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(gallery.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gridview3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(gallery.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gridview4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(gallery.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+*/
+
+
+
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_gallery, container, false);
+
+        return rootView;
     }
 
 
@@ -181,6 +231,51 @@ public class gallery extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
             //SurfaceView sview = (SurfaceView) rootView.findViewById(R.id.camera);
+
+            GridView gridview4 = (GridView) rootView.findViewById(R.id.gridView4);
+            GridView gridview3 = (GridView) rootView.findViewById(R.id.gridView3);
+            GridView gridview2 = (GridView) rootView.findViewById(R.id.gridView2);
+            GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
+            gridview1.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview2.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview3.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview4.setAdapter(new ImageAdapter1(rootView.getContext()));
+
+
+            gridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+
+
             return rootView;
         }
     }
@@ -221,7 +316,6 @@ public class gallery extends Activity {
 
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
-            //RelativeLayout sview = (RelativeLayout) rootView.findViewById(R.id.friends);
             return rootView;
         }
     }

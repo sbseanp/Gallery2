@@ -6,4 +6,8 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/action_plus"
+        android:title="+"
+        android:textSize="60dp"
+        android:showAsAction="always|withText"/>
 </menu>
