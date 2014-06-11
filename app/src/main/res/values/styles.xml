@@ -15,4 +15,6 @@
         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#33B5E5</item>
     </style>
+
+    <color name="teal">#33B5E5</color>
 </resources>

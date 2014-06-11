@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="1000dp"
+    android:orientation="vertical"
+    android:paddingBottom="10dp" >
+
+    <LinearLayout
+        android:id="@+id/linearLayoutEditAlbum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"       
+        android:paddingBottom="100dp"
+        android:orientation="vertical" >
+
+     <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/secondsCounter2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#5a5a5c"
+        android:textSize="35dp" />
+    
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:progress="50"
+      />
+   </LinearLayout>
+   
+   <ImageView
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/linearLayoutEditAlbum"
+        android:src="@drawable/trash" 
+        android:id="@+id/deleteAlbum"
+        android:background="@null" /> 
+
+    <Button
+        android:id="@+id/exitEditAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:background="@drawable/done_button"
+        android:text="  Done  " />
+    
+</RelativeLayout>

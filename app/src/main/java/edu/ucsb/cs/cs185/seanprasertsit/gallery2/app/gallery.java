@@ -1,5 +1,7 @@
 package edu.ucsb.cs.cs185.seanprasertsit.gallery2.app;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -7,6 +9,8 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ListFragment;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
@@ -19,28 +23,45 @@ import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.Gallery;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.Context;
 
 public class gallery extends Activity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-     */
     SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     ViewPager mViewPager;
+
+    ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (position == 0) {
+                getActionBar().hide();
+            }
+            else if (position == 1) {
+                getActionBar().show();
+            }
+            else if (position == 2) {
+                getActionBar().show();
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +77,7 @@ public class gallery extends Activity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOnPageChangeListener(listener);
         mViewPager.setCurrentItem(1);
 
     }
@@ -85,9 +107,7 @@ public class gallery extends Activity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener{
-
-        ActionBar actionBar = getActionBar();
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -131,55 +151,6 @@ public class gallery extends Activity {
             }
             return null;
         }
-
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            actionBar.setSelectedNavigationItem(position);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-        }
-    }
-
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
     }
 
     public static class GalleryFragment extends Fragment {
@@ -199,6 +170,51 @@ public class gallery extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
             //SurfaceView sview = (SurfaceView) rootView.findViewById(R.id.camera);
+
+            GridView gridview4 = (GridView) rootView.findViewById(R.id.gridView4);
+            GridView gridview3 = (GridView) rootView.findViewById(R.id.gridView3);
+            GridView gridview2 = (GridView) rootView.findViewById(R.id.gridView2);
+            GridView gridview1 = (GridView) rootView.findViewById(R.id.gridView1);
+            gridview1.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview2.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview3.setAdapter(new ImageAdapter1(rootView.getContext()));
+            gridview4.setAdapter(new ImageAdapter1(rootView.getContext()));
+
+
+            gridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+            gridview4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                    ((gallery) getActivity()).startActivity(intent);
+                }
+            });
+
+
+
             return rootView;
         }
     }
@@ -222,24 +238,17 @@ public class gallery extends Activity {
             return opened;
         }
     }
-    public static class FriendFragment extends Fragment {
+    public static class FriendFragment extends ListFragment {
 
-        private static final String ARG_SECTION_NUMBER = "2";
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            String[] values = new String[] { "Anton Chigurh", "Bruce Wayne", "Clark Kent",
+                    "Don Draper", "Elaine Benes", "Frank Underwood", "Gus Fring", "Hannah Hunt",
+                    "Izayoi", "Jon Osterman", "Karen Brown"};
 
-        public static FriendFragment newInstance(int sectionNumber) {
-            FriendFragment fragment = new FriendFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public FriendFragment() {}
-
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
-            //RelativeLayout sview = (RelativeLayout) rootView.findViewById(R.id.friends);
-            return rootView;
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+            setListAdapter(adapter);
         }
     }
 }
